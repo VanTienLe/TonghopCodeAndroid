@@ -1,0 +1,55 @@
+//check not null
+btnDangnhap.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        String email = edtTen.getText().toString();
+        String password = edtMatkhau.getText().toString();
+
+        if (email.trim().isEmpty()){
+            edtTen.setError("Email not null");
+            return;
+        }
+        if (password.trim().isEmpty()){
+            edtMatkhau.setError("Password not null");
+            return;
+        }
+
+        txtHienthi.setText("Thong tin da duoc nhap");
+    }
+});
+
+//Calendar
+SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",Locale.getDefault());
+calendar = Calendar.getInstance();
+edtNgaydat.setText(sdf.format(calendar.getTime()));
+calendar.add(Calendar.DATE, 2);
+edtNgaygiao.setText(sdf.format(calendar.getTime()));
+
+//Toolbar
+toolbar.setBackgroundColor(context.getResources().getColor(R.color.myColorBlue));
+toolbar.setTitle(strTitle);
+toolbar.setTitleTextColor(Color.WHITE);
+toolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
+toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "aaa", Toast.LENGTH_SHORT).show();
+            }
+});
+toolbar.setOverflowIcon(context.getDrawable(R.drawable.ic_menu_white_24dp));
+toolbar.inflateMenu(R.menu.menu_option);
+toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                switch (id){
+                    case R.id.item1:
+                        Toast.makeText(context, "11", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item2:
+                        Toast.makeText(context, "22", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return false;
+            }
+});
